@@ -268,7 +268,7 @@
                 lineJoin: 'miter',
                 weight: 2.0, 
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_PasigCityBoundary_2');
@@ -276,7 +276,7 @@
         map.getPane('pane_PasigCityBoundary_2').style['mix-blend-mode'] = 'normal';
         var layer_PasigCityBoundary_2 = new L.geoJson(json_PasigCityBoundary_2, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_PasigCityBoundary_2',
             layerName: 'layer_PasigCityBoundary_2',
             pane: 'pane_PasigCityBoundary_2',
@@ -284,6 +284,7 @@
             style: style_PasigCityBoundary_2_0,
         });
         bounds_group.addLayer(layer_PasigCityBoundary_2);
+        map.addLayer(layer_PasigCityBoundary_2);
         function pop_PasigPalengkeUgongNorth_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1074,7 +1075,7 @@
             }
         });
         var overlaysTree = [
-        {label: '<b>Libreng Sakay Route</b>',  selectAllCheckbox: true, children: [
+        {label: '<b>Libreng Sakay Route</b>', collapsed: true, selectAllCheckbox: true, children: [
             {label: '<img src="legend/SPEDtoOSMA_15.png" /> SPED to OSMA', layer: layer_SPEDtoOSMA_15},
             {label: '<img src="legend/NagpayongtoSPED_14.png" /> Nagpayong to SPED', layer: layer_NagpayongtoSPED_14},
             {label: '<img src="legend/SPEDtoNagpayong_13.png" /> SPED to Nagpayong', layer: layer_SPEDtoNagpayong_13},
