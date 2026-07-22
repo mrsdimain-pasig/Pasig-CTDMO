@@ -376,3 +376,35 @@
                 2px 1px 0 #fafafa,
                 2px 2px 0 #fafafa;
         }
+/* ==========================================
+   NORTH ARROW
+   ========================================== */
+
+.north-arrow-control {
+    background: white;
+    width: 50px;
+    height: 65px;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.north-arrow {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.north-arrow-symbol {
+    font-size: 36px;
+    line-height: 35px;
+    transform-origin: center center;
+    transition: transform 0.1s linear;
+}
+
+.north-arrow-label {
+    font-size: 16px;
+    line-height: 20px;
+}
