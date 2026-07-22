@@ -408,3 +408,115 @@
     font-size: 16px;
     line-height: 20px;
 }
+
+// ==========================================
+// MAP ROTATION CONTROLS
+// ==========================================
+
+var RotationControl = L.Control.extend({
+
+    options: {
+        position: 'topright'
+    },
+
+    onAdd: function(map) {
+
+        var container = L.DomUtil.create(
+            'div',
+            'leaflet-bar leaflet-control rotation-control'
+        );
+
+        // Rotate Left
+        var rotateLeft = L.DomUtil.create(
+            'a',
+            'rotation-button',
+            container
+        );
+
+        rotateLeft.innerHTML = '↺';
+        rotateLeft.title = 'Rotate Left';
+
+        // Rotate Right
+        var rotateRight = L.DomUtil.create(
+            'a',
+            'rotation-button',
+            container
+        );
+
+        rotateRight.innerHTML = '↻';
+        rotateRight.title = 'Rotate Right';
+
+        // Reset North
+        var resetNorth = L.DomUtil.create(
+            'a',
+            'rotation-button',
+            container
+        );
+
+        resetNorth.innerHTML = 'N';
+        resetNorth.title = 'Reset North';
+
+        // Prevent map interaction
+        L.DomEvent.disableClickPropagation(container);
+
+        // Rotate Left
+        L.DomEvent.on(rotateLeft, 'click', function(e) {
+
+            L.DomEvent.stop(e);
+
+            var bearing = map.getBearing();
+
+            map.setBearing(bearing - 15);
+
+        });
+
+        // Rotate Right
+        L.DomEvent.on(rotateRight, 'click', function(e) {
+
+            L.DomEvent.stop(e);
+
+            var bearing = map.getBearing();
+
+            map.setBearing(bearing + 15);
+
+        });
+
+        // Reset North
+        L.DomEvent.on(resetNorth, 'click', function(e) {
+
+            L.DomEvent.stop(e);
+
+            map.setBearing(0);
+
+        });
+
+        return container;
+    }
+});
+
+map.addControl(new RotationControl());
+
+			/* ==========================================
+   ROTATION CONTROLS
+   ========================================== */
+
+.rotation-control {
+    background: white;
+}
+
+.rotation-button {
+    width: 34px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    display: block;
+}
+
+.rotation-button:hover {
+    background: #f0f0f0;
+}
